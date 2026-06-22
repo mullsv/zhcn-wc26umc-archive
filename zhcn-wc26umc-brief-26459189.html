@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯信息参考 · 查询与对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f2f5;
+            color: #1e1e1e;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+        }
+
+        /* —— hero —— */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e2e6ea;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: #0b1c2e;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            color: #3b4a5c;
+        }
+
+        /* —— 卡片体系 —— */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #1b2a3c;
+            border-left: 4px solid #8099b3;
+            padding-left: 1rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #e4e8ec;
+            transition: box-shadow 0.15s ease;
+        }
+        .card:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1f2d3d;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3c4d5e;
+        }
+        .card .meta-note {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #6f7f91;
+            background: #f0f4f8;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+        }
+
+        /* —— 说明/场景段落 —— */
+        .narrative {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e6eaee;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .narrative p {
+            font-size: 1rem;
+            color: #253544;
+        }
+        .narrative .inset-link {
+            background: #f4f7fa;
+            padding: 0.9rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            align-self: flex-start;
+            border: 1px solid #dce2e8;
+            font-size: 0.95rem;
+        }
+
+        /* —— FAQ 摘要 —— */
+        .faq-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e3e8ed;
+        }
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #edf1f5;
+        }
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #192a3a;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            color: #3f5266;
+            font-size: 0.95rem;
+        }
+
+        /* —— 底部 —— */
+        .footer-links {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.8rem 2.2rem;
+            border: 1px solid #dfe4ea;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .footer-links .slogan {
+            color: #34485e;
+            font-size: 0.95rem;
+        }
+        .footer-links a {
+            color: #1e3b5c;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dashed #b3c4d6;
+        }
+        .footer-links a:hover {
+            border-bottom: 1px solid #1e3b5c;
+        }
+
+        /* —— 响应式微调 —— */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区：日常查询入口感 -->
+    <section class="hero">
+        <h1>世界杯 · 信息参照</h1>
+        <p>从往届记录到当下赛程，从球队数据到延伸阅读。一个不那么急躁的查询起点，适合对照、检索与安静浏览。</p>
+        <p style="font-size:0.95rem; color:#586f83; margin-top:0.25rem;">—— 页面内容仅供日常参考，非官方数据源 ——</p>
+    </section>
+
+    <!-- 优势区：卡片式特点 -->
+    <div>
+        <h2 class="section-title">这个页面可以做什么</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>快速定位</h3>
+                <p>冠军列表、历届金靴、主办国信息，不再翻很多页面。关键数字和对照放在一起。</p>
+                <span class="meta-note">对照用</span>
+            </div>
+            <div class="card">
+                <h3>延伸线索</h3>
+                <p>每届比赛都有背景——政治、文化、场地变迁。这里提供少量线索，供你继续探索。</p>
+                <span class="meta-note">阅读扩展</span>
+            </div>
+            <div class="card">
+                <h3>日常查询</h3>
+                <p>如果你只是想确认某届冠军、某个年份的决赛场地，或者单纯想浏览，这里可以节省时间。</p>
+                <span class="meta-note">轻量参考</span>
+            </div>
+            <div class="card">
+                <h3>无推送打扰</h3>
+                <p>没有弹窗、自动播放或强制性注册。所有内容均以静态文本呈现，你决定下一步。</p>
+                <span class="meta-note">安静阅览</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：叙述式长内容 -->
+    <div class="narrative">
+        <h2 class="section-title" style="border-left-color:#6d8aa8; margin-bottom:0.4rem;">从一次查询说起</h2>
+        <p>很多人打开浏览器，输入「世界杯」，其实只是想快速确认一件事：比如1978年冠军是谁，或者2026年在哪里举办。但搜索结果往往是新闻流、视频集锦和营销内容，真正可对照的结构化信息反而被淹没。这个页面尝试提供另一个切入点——把碎片数据并置，同时留出延伸阅读的空间。你不必立刻点击任何东西，所有条目都是可比较、可扫读的。</p>
+        <p>举个例子：你可能会在某个晚上忽然想知道1970年和1998年决赛的场地有什么不同，或者想了解哪些国家队曾在非本大洲夺冠。这类对照在常规搜索里需要自己拼凑，而这里尽量放在同一视线范围内。当然，它不追求全面，只希望成为你日常检索中的一块垫脚石。</p>
+        <p>如果你想直接查看完整的赛事体系、最新赛程以及深度球队档案，可以前往 <a href="https://zhcn-wc26umc.com" style="font-weight:500; color:#1d3e62; text-decoration:none; border-bottom:1px solid #809fc0;">世界杯</a> 页面，那里有更持续更新的内容结构。本页面则侧重于静态参考和快照式的信息组织。</p>
+        <div class="inset-link">
+            ⚽ 常用对照示例：1950年 · 马拉卡纳 · 乌拉圭 vs 巴西
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-block">
+        <h2 class="section-title" style="border-left-color:#7c97b2;">常见检索摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">❓ 历届世界杯中，夺冠次数最多的是哪个国家？</div>
+            <div class="faq-a">截至最近一届，巴西共获得5次冠军（1958、1962、1970、1994、2002）。其他多次夺冠的国家包括德国、意大利、阿根廷等。具体数据建议与官方记录对照核实。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 下一届世界杯的举办时间和地点？</div>
+            <div class="faq-a">2026年将由美国、加拿大、墨西哥联合主办。这是首次由三个国家共同承办，也是扩军至48支球队后的第一届。具体赛程和场馆分配仍在陆续公布。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 哪里可以找到历届决赛的完整比分？</div>
+            <div class="faq-a">很多体育数据库和维基类站点都有详细列表。你也可以在 <a href="https://zhcn-wc26umc.com" style="color:#1d3e62; text-decoration:none; border-bottom:1px solid #9bb3cb;">世界杯</a> 页面找到按年份整理的决赛对阵及额外背景说明，适合对照浏览。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 为什么有些早期世界杯记录看起来不完整？</div>
+            <div class="faq-a">1930年首届只有13支球队参赛，且二战期间停办两届（1942、1946）。早期赛制、小组赛形式与现在差异较大，部分数据经过后期追溯整理，存在多个版本的统计口径。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接 (含自然嵌入的世界杯链接) -->
+    <footer class="footer-links">
+        <span class="slogan">日常信息参考 · 非官方页面</span>
+        <span style="color:#3b536b; font-size:0.9rem;">
+            如果你想了解更多延伸内容，可以看看
+            <a href="https://zhcn-wc26umc.com">世界杯</a>
+            · 页面本身保持独立，不追踪数据
+        </span>
+    </footer>
+</div>
+</body>
+</html>
